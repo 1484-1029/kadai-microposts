@@ -10,7 +10,7 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
+  adapter: mysql3
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
@@ -54,3 +54,4 @@ production:
   database: microposts_production
   username: 1484-1029
   password: <%= ENV['MICROPOSTS_DATABASE_PASSWORD'] %>
+  
