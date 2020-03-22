@@ -1,0 +1,22 @@
+<ul class="list-unstyled">
+  <% @favoritings.each do |favoriting| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(favoriting.user, { size: 50 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to favoriting.user.name, user_path(favoriting.user) %> <span class="text-muted">posted at <%= favoriting.created_at %></span>
+        </div>
+        <div>
+          <p class="mb-0"><%= favoriting.content %></p>
+        </div>
+        <div>
+          <% if current_user == favoriting.user %>
+            <%= link_to "Delete", favoriting, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+        <%= render 'favorites/favorite_button', micropost: favoriting %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
